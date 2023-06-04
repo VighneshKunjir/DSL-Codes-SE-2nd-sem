@@ -1,0 +1,256 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 #include<iostream>\par
+#include<stdlib.h>\par
+#include<string.h>\par
+using namespace std;\par
+struct node\par
+\{   char name[20];\par
+     node *next;\par
+     node *down;\par
+      int flag;\par
+\};\par
+class Gll\par
+\{   char ch[20];    int n,i;    \par
+     node *head=NULL,*temp=NULL,*t1=NULL,*t2=NULL;\par
+     public:\par
+     node *create();\par
+     void insertb();\par
+     void insertc();\par
+     void inserts();\par
+     void insertss();\par
+     void displayb();\par
+    \par
+\};\par
+node *Gll::create()\par
+\{\par
+    node *p=new(struct node);\par
+    p->next=NULL;\par
+    p->down=NULL;\par
+    p->flag=0;\par
+    cout<<"\\n enter the name";\par
+    cin>>p->name;\par
+    return p;\par
+\}\par
+void Gll::insertb()\par
+\{      \par
+        \par
+         if(head==NULL)\par
+           \{    t1=create();\par
+                head=t1;\par
+           \}\par
+           else\par
+           \{\par
+              cout<<"\\n book exist";\par
+           \}   \par
+\}     \par
+void Gll::insertc()\par
+\{     \par
+      if(head==NULL)\par
+          \{ \par
+                  cout<<"\\n there is no book";   \par
+           \}\par
+           else\par
+           \{    cout<<"\\n how many chapters you want to insert";\par
+                cin>>n;\par
+                for(i=0;i<n;i++)\par
+                \{\par
+                t1=create();\par
+                if(head->flag==0)\par
+                \{  head->down=t1;   head->flag=1;    \}\par
+                else\par
+                \{   temp=head;\par
+                     temp=temp->down;\par
+                    while(temp->next!=NULL)\par
+                         temp=temp->next;\par
+                     temp->next=t1;\par
+                \}\par
+                \}\par
+          \}\par
+                    \par
+                              \par
+\} \par
+void Gll::inserts()\par
+\{     \par
+  \par
+         if(head==NULL)\par
+          \{ \par
+                  cout<<"\\n there is no book";   \par
+           \}\par
+           else\par
+           \{    cout<<"\\n Enter the name of chapter on which  you want to enter the section";\par
+                 cin>>ch;\par
+                \par
+                 temp=head;\par
+               if(temp->flag==0)\par
+               \{   cout<<"\\n their are no chapters on in book";\par
+               \}\par
+               else\par
+               \{    temp=temp->down;\par
+                while(temp!=NULL)\par
+                 \{ \par
+                      if(!strcmp(ch,temp->name))\par
+                      \{   \par
+                                cout<<"\\n how many sections you want to enter";\par
+                                cin>>n;\par
+                                for(i=0;i<n;i++)\par
+                                \{\par
+                                   \par
+                                           t1=create();\par
+                                               if(temp->flag==0)\par
+                                               \{      temp->down=t1;\par
+                                                     \par
+                                                        temp->flag=1;  cout<<"\\n******";\par
+                                                        t2=temp->down;\par
+                                                   \par
+                                               \}\par
+                                              else\par
+                                               \{           \par
+                                                              cout<<"\\n#####";\par
+                                                               while(t2->next!=NULL)\par
+                                                               \{     t2=t2->next;          \}\par
+                                                                       t2->next=t1;                 \par
+                                                 \}   \par
+                                 \}                              \par
+                                   break;       \par
+                       \}  \par
+                               temp=temp->next;\par
+                  \}\par
+                \}    \par
+         \}\par
+\}\par
+void Gll::insertss()\par
+\{     \par
+  \par
+         if(head==NULL)\par
+          \{ \par
+                  cout<<"\\n there is no book";   \par
+           \}\par
+           else\par
+           \{    cout<<"\\n Enter the name of chapter on which  you want to enter the section";\par
+                 cin>>ch;\par
+                \par
+                 temp=head;\par
+               if(temp->flag==0)\par
+               \{   cout<<"\\n their are no chapters on in book";\par
+               \}\par
+               else\par
+               \{    temp=temp->down;\par
+                while(temp!=NULL)\par
+                 \{ \par
+                      if(!strcmp(ch,temp->name))\par
+                      \{       \par
+                         cout<<"\\n enter name of section in which you want to enter the sub section";\par
+                         cin>>ch;\par
+                        \par
+                        if(temp->flag==0)\par
+                        \{   cout<<"\\n their are no sections ";   \}\par
+                         else\par
+                         \{       temp=temp->down;\par
+                                 while(temp!=NULL)\par
+                                 \{\par
+                                     if(!strcmp(ch,temp->name))\par
+                                     \{\par
+                                      cout<<"\\n how many subsections you want to enter";\par
+                                        cin>>n;\par
+                    for(i=0;i<n;i++)\par
+                                   \{\par
+                                   \par
+                                           t1=create();\par
+                                               if(temp->flag==0)\par
+                                               \{      temp->down=t1;\par
+                                                     \par
+                                                        temp->flag=1;  cout<<"\\n******";\par
+                                                        t2=temp->down;\par
+                                                   \par
+                                               \}\par
+                                              else\par
+                                               \{           \par
+                                                              cout<<"\\n#####";\par
+                                                               while(t2->next!=NULL)\par
+                                                               \{     t2=t2->next;          \}\par
+                                                                       t2->next=t1;                 \par
+                                                 \}   \par
+                                        \}                              \par
+                                         break;\par
+                                     \}      temp=temp->next;\par
+                                   \}\par
+                          \}       \par
+                       \}\par
+                         \par
+                               temp=temp->next;\par
+                  \}\par
+                \}    \par
+         \}\par
+\} \par
+void Gll::displayb()\par
+\{       \par
+               \par
+                if(head==NULL)\par
+                \{  cout<<"\\n book not exist"; \par
+                \}\par
+                else\par
+                \{\par
+                 temp=head;\par
+                 \par
+                    cout<<"\\n NAME OF BOOK:  "<<temp->name;\par
+                         if(temp->flag==1)\par
+                         \{\par
+                         temp=temp->down;\par
+                        \par
+                           while(temp!=NULL)\par
+                           \{     cout<<"\\n\\t\\tNAME OF CHAPTER:  "<<temp->name;\par
+                                 t1=temp;\par
+                                 if(t1->flag==1)\par
+                                 \{  t1=t1->down;\par
+                                    while(t1!=NULL)\par
+                                    \{     cout<<"\\n\\t\\t\\t\\tNAME OF SECTION:  "<<t1->name;\par
+                                          t2=t1;\par
+                                          if(t2->flag==1)\par
+                                          \{  t2=t2->down;\par
+                                          while(t2!=NULL)\par
+                                          \{     cout<<"\\n\\t\\t\\t\\t\\t\\tNAME OF SUBSECTION:  "<<t2->name;     \par
+                                          t2=t2->next;\par
+                                          \}\par
+                                          \}     \par
+                                          t1=t1->next;\par
+                                    \}\par
+                                 \}   \par
+                                  temp=temp->next;\par
+                           \}\par
+                        \par
+                          \}\par
+                \}         \par
+                     \par
+                  \par
+                  \par
+\}                  \par
+int main()\par
+\{    Gll g;   int x;  \par
+       while(1)\par
+      \{    cout<<"\\n\\n enter your choice";\par
+            cout<<"\\n 1.insert book";\par
+            cout<<"\\n 2.insert chapter";\par
+            cout<<"\\n 3.insert section";\par
+            cout<<"\\n 4.insert subsection";\par
+            cout<<"\\n 5.display book";\par
+            cout<<"\\n 6.exit";\par
+            cin>>x;\par
+           switch(x)\par
+           \{   case 1:          g.insertb();\par
+                                         break;             \par
+                case 2:          g.insertc();\par
+                                         break;      \par
+                case 3:          g.inserts();\par
+                                         break;\par
+                case 4:          g.insertss();\par
+                                         break;    \par
+                case 5:          g.displayb();\par
+                                         break;      \par
+                case 6:  exit(0);\par
+           \}\par
+       \}\par
+       return 0;\par
+\}          \par
+}
+ 
